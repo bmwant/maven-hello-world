@@ -3,9 +3,8 @@ docker pull maven
 docker run -it --rm --name my-maven-project -v `pwd`:/src maven /bin/bash
 ```
 
-
+Generate simple web application
 ```
-mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 mvn archetype:generate \
 	-DarchetypeGroupId=org.apache.maven.archetypes \
 	-DarchetypeArtifactId=maven-archetype-webapp \
@@ -23,5 +22,6 @@ mvn war:war
 
 Serve web application
 ```
+mvn clean install tomcat7:run
 mvn install tomcat:run-war
 ```
