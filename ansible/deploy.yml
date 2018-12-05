@@ -2,6 +2,10 @@
 
 - hosts: all
 
+  roles:
+    - role: geerlingguy.docker
+      become: true
+
   tasks:
     - include_vars: "vars/main.yml"
     - name: copy war file to remote
