@@ -1,5 +1,16 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<h3>
+    <%
+        String message = (String)System.getenv("message");
+        if(message==null)  {
+    %>
+    Hello world!
+    <%
+    } else {
+        out.print(message);
+    }
+    %>
+</h3>
 </body>
 </html>

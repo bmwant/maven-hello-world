@@ -20,8 +20,12 @@ Create war file `/src/my-webapp/target/my-webapp.war`
 mvn war:war
 ```
 
-Serve web application
+Serve web application (default port is `:8080`)
 ```
-mvn clean install tomcat7:run
-mvn install tomcat:run-war
+$ cd /src/my-webapp
+$ mvn clean install tomcat7:run-war
 ```
+Run on a specific port
+```
+$ mvn tomcat7:run-war -Dmaven.tomcat.port=8181
+``
