@@ -1,0 +1,32 @@
+---
+
+- hosts: all
+
+  tasks:
+    - include_vars: "vars/main.yml"
+    - name: copy war file to remote
+      copy:
+        src: "../my-webapp/target/my-webapp.war"
+        dest: "{{ workspace }}/"
+        owner: ubuntu
+        group: ubuntu
+
+    - name: create service
+      template:
+        src: "templates/my-webapp.service.j2"
+        dest: "/etc/systemd/system/mywebapp.service"
+        backup: true
+      changed_when: true
+      notify:
+        - ensure service is running
+      become: true
+
+#    - name: make sure service is running
+  handlers:
+    - name: ensure service is running
+      systemd:
+        name: mywebapp
+        daemon_reload: true
+        state: started
+        enabled: true
+      become: true

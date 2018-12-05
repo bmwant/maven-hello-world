@@ -1,0 +1,15 @@
+[Unit]
+Description=My Webapp service
+
+[Service]
+User=ubuntu
+WorkingDirectory={{ workspace }}
+Type=forking
+Environment=message="{{ message }}"
+ExecStart=/bin/echo "{{ port }}"
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+workspace: "/home/ubuntu/webapp"
+port: 8181
+message: "Hi there!"
