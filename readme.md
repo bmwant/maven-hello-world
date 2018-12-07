@@ -45,7 +45,8 @@ $ export message="My custom greetings"
 ```
 
 ### Launch infrastructure
-Create file `terraform/variables.tf` and fill with your data and then
+Create file `terraform/variables.tf` and fill with your data.
+For this example `ami-0ac019f4fcb7cb7e6` and `t1.micro` instance type were used.
 ```
 $ cd terraform
 $ terraform init
@@ -56,9 +57,16 @@ order to provision that later.
 ```
 sudo docker run -it --rm  -p 8181:8080 -v `pwd`/webapp:/usr/local/tomcat/webapps/ tomcat:8.0 /bin/bash
 ```
+
 ### Deploy
 ```
 $ ansible-galaxy install geerlingguy.docker
 $ cd ansible
 $ ansible-playbook -v deploy.yml
+```
+
+### Cleanup
+```
+$ terraform destroy
+$ terraform destroy -target aws_instance.mywebapp
 ```
