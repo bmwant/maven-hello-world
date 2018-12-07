@@ -74,8 +74,8 @@ resource "aws_key_pair" "auth" {
 }
 
 resource "aws_instance" "mywebapp" {
-  ami           = "ami-408c7f28"
-  instance_type = "t1.micro"
+  ami           = "${var.ami_id}"
+  instance_type = "${var.instance_type}"
   vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
   subnet_id = "${aws_subnet.default.id}"
 

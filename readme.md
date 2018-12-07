@@ -1,5 +1,11 @@
 ## Quickstart
 
+### Prerequisites
+* [Docker]()
+* [Terraform]()
+* [Ansible]()
+
+### Getting started locally
 Bootstrap required environment with a help of Docker
 ```
 docker pull maven
@@ -39,13 +45,14 @@ $ export message="My custom greetings"
 ```
 
 ### Launch infrastructure
-
+Create file `terraform/variables.tf` and fill with your data and then
 ```
 $ cd terraform
 $ terraform init
 $ terraform apply
 ```
-`ami-0ac019f4fcb7cb7e6`
+This will launch and instance and output it's IP to Ansible inventory in
+order to provision that later.
 ```
 sudo docker run -it --rm  -p 8181:8080 -v `pwd`/webapp:/usr/local/tomcat/webapps/ tomcat:8.0 /bin/bash
 ```
@@ -53,5 +60,5 @@ sudo docker run -it --rm  -p 8181:8080 -v `pwd`/webapp:/usr/local/tomcat/webapps
 ```
 $ ansible-galaxy install geerlingguy.docker
 $ cd ansible
-$ ansible-playbook deploy.yml
+$ ansible-playbook -v deploy.yml
 ```
