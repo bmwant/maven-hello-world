@@ -37,3 +37,7 @@ hs_err_pid*
 
 .idea/
 *.retry
+*.tfstate
+.terraform/
+*.backup
+terraform/variables.tf

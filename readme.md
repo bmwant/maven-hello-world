@@ -39,6 +39,12 @@ $ export message="My custom greetings"
 ```
 
 ### Launch infrastructure
+
+```
+$ cd terraform
+$ terraform init
+$ terraform apply
+```
 `ami-0ac019f4fcb7cb7e6`
 ```
 sudo docker run -it --rm  -p 8181:8080 -v `pwd`/webapp:/usr/local/tomcat/webapps/ tomcat:8.0 /bin/bash
