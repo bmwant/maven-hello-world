@@ -1,9 +1,9 @@
 ## Quickstart
 
 ### Prerequisites
-* [Docker]()
-* [Terraform]()
-* [Ansible]()
+* [Docker](https://docs.docker.com/install/)
+* [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
+* [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 ### Getting started locally
 Bootstrap required environment with a help of Docker
