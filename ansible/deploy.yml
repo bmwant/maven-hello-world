@@ -2,9 +2,9 @@
 
 - hosts: all
 
-  roles:
-    - role: geerlingguy.docker
-      become: true
+#  roles:
+#    - role: geerlingguy.docker
+#      become: true
 
   tasks:
     - include_vars: "vars/main.yml"
@@ -25,7 +25,16 @@
         - ensure service is running
       become: true
 
-#    - name: make sure service is running
+# You can install docker with pip in case you want to use this module
+#    - name: pull tomcat image
+#      docker_image:
+#        name: tomcat
+#        tag: 8.0
+
+    - name: pull tomcat image
+      shell: "docker pull tomcat:8.0"
+      become: true
+
   handlers:
     - name: ensure service is running
       systemd:

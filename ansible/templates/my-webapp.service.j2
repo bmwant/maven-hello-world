@@ -6,7 +6,7 @@ User=ubuntu
 WorkingDirectory={{ workspace }}
 Type=forking
 Environment=message="{{ message }}"
-ExecStart=/bin/echo "{{ port }}"
+ExecStart=/usr/bin/docker run -d --name my-webapp --rm  -p {{ port }}:8080 -v "{{ workspace }}":/usr/local/tomcat/webapps/ tomcat:8.0
 Restart=on-failure
 RestartSec=5
 TimeoutStopSec=10

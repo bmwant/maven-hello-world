@@ -54,9 +54,7 @@ $ terraform apply
 ```
 This will launch and instance and output it's IP to Ansible inventory in
 order to provision that later.
-```
-sudo docker run -it --rm  -p 8181:8080 -v `pwd`/webapp:/usr/local/tomcat/webapps/ tomcat:8.0 /bin/bash
-```
+
 
 ### Deploy
 ```
@@ -64,6 +62,21 @@ $ ansible-galaxy install geerlingguy.docker
 $ cd ansible
 $ ansible-playbook -v deploy.yml
 ```
+
+You service will be launched within docker container with a command similar
+to this one
+```
+$ sudo docker run -it --rm  \
+	-p 8181:8080 \
+	-v `pwd`/webapps:/usr/local/tomcat/webapps/ 
+	tomcat:8.0 /bin/bash
+```
+
+Ansible will output IP address of target instance, so visit
+
+`http://<instance-ip>:8181/mywebapp/` 
+
+to check your application app and running.
 
 ### Cleanup
 ```
